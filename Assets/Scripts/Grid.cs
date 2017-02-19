@@ -22,9 +22,9 @@ public class Grid : MonoBehaviour {
         //Initialise the size of the tile array
         tiles = new GameObject[gridSize, gridSize];
 
-        for (int y = 0; y < gridSize; y++)
+        for (int x = 0; x < gridSize; x++)
         {
-            for (int x = 0; x < gridSize; x++)
+            for (int y = 0; y < gridSize; y++)
             {
                 map[x, y] = Random.Range(0, 6);
                 //Instantiate a tile object at the proper position

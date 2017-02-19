@@ -23,6 +23,7 @@ public class SpawnFlockBuddies : MonoBehaviour {
             int randX = Random.Range(0, 41);
             int randZ = Random.Range(0, 41);
 
+
             unitList[i] = Instantiate(unit, new Vector3(randX, 0.65f, randZ), Quaternion.identity) as GameObject;
             unitList[i].transform.parent = gameObject.transform;
 

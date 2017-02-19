@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Grid.cs" />
     <Compile Include="Assets\Scripts\Node.cs" />
     <Compile Include="Assets\Scripts\SpawnFlockBuddies.cs" />
+    <Compile Include="Assets\Scripts\Steering.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

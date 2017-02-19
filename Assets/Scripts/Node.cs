@@ -5,7 +5,6 @@ using UnityEngine;
 public class Node : MonoBehaviour {
 
     //Cache the grid script
-    Grid map;
     SpawnFlockBuddies spawnScript;
 
     //Vectors for own position and parent posistion
@@ -14,7 +13,6 @@ public class Node : MonoBehaviour {
 
     void Start()
     {
-        map = GameObject.Find("GridManager").GetComponent<Grid>();
         spawnScript = GameObject.Find("UnitManager").GetComponent<SpawnFlockBuddies>();
 
         this.pos = new Vector2(transform.position.x, transform.position.z);
