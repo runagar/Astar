@@ -85,9 +85,9 @@ public class Astar : MonoBehaviour {
                 Vector2 temp = map.tiles[x - 1, y].GetComponent<Node>().pos;
 
                 //If the pos is already in the open list, only work on it if we found a shorter route here
-                if (Open.Contains(temp) && costToNode[x - 1, y] > costToNode[x, y] + map.map[x, y])
+                if (Open.Contains(temp) && costToNode[x - 1, y] > costToNode[x, y] + map.map[x - 1, y])
                 {
-                    costToNode[x - 1, y] = costToNode[x, y] + map.map[x, y];
+                    costToNode[x - 1, y] = costToNode[x, y] + map.map[x - 1, y];
                     heuristic[x - 1, y] = costToNode[x - 1, y] + (int)Mathf.Abs(goal.x - x - 1 + goal.y - y);
                     parents[x - 1, y] = current;
                 }
@@ -95,7 +95,7 @@ public class Astar : MonoBehaviour {
                 else if (!Open.Contains(temp))
                 {
                     Open.Add(map.tiles[x - 1, y].GetComponent<Node>().pos);
-                    costToNode[x - 1, y] = costToNode[x, y] + map.map[x, y];
+                    costToNode[x - 1, y] = costToNode[x, y] + map.map[x - 1, y];
                     heuristic[x - 1, y] = costToNode[x - 1, y] + (int)Mathf.Abs(goal.x - x - 1 + goal.y - y);
                     parents[x - 1, y] = current;
                 }
@@ -103,16 +103,16 @@ public class Astar : MonoBehaviour {
             if (x + 1 <= 40 && !Burned.Contains(map.tiles[x + 1, y].GetComponent<Node>().pos))
             {
                 Vector2 temp = map.tiles[x + 1, y].GetComponent<Node>().pos;
-                if (Open.Contains(temp) && costToNode[x + 1, y] > costToNode[x, y] + map.map[x, y])
+                if (Open.Contains(temp) && costToNode[x + 1, y] > costToNode[x, y] + map.map[x + 1, y])
                 {
-                    costToNode[x + 1, y] = costToNode[x, y] + map.map[x, y];
+                    costToNode[x + 1, y] = costToNode[x, y] + map.map[x + 1, y];
                     heuristic[x + 1, y] = costToNode[x + 1, y] + (int)Mathf.Abs(goal.x - x + 1 + goal.y - y);
                     parents[x + 1, y] = current;
                 }
                 else if (!Open.Contains(temp))
                 {
                     Open.Add(map.tiles[x + 1, y].GetComponent<Node>().pos);
-                    costToNode[x + 1, y] = costToNode[x, y] + map.map[x, y];
+                    costToNode[x + 1, y] = costToNode[x, y] + map.map[x + 1, y];
                     heuristic[x + 1, y] = costToNode[x + 1, y] + (int)Mathf.Abs(goal.x - x + 1 + goal.y - y);
                     parents[x + 1, y] = current;
                 }
@@ -120,16 +120,16 @@ public class Astar : MonoBehaviour {
             if (y - 1 >= 0 && !Burned.Contains(map.tiles[x, y - 1].GetComponent<Node>().pos))
             {
                 Vector2 temp = map.tiles[x, y - 1].GetComponent<Node>().pos;
-                if (Open.Contains(temp) && costToNode[x, y - 1] > costToNode[x, y] + map.map[x, y])
+                if (Open.Contains(temp) && costToNode[x, y - 1] > costToNode[x, y] + map.map[x, y - 1])
                 {
-                    costToNode[x, y - 1] = costToNode[x, y] + map.map[x, y];
+                    costToNode[x, y - 1] = costToNode[x, y] + map.map[x, y - 1];
                     heuristic[x, y - 1] = costToNode[x, y - 1] + (int)Mathf.Abs(goal.x - x + goal.y - y - 1);
                     parents[x, y - 1] = current;
                 }
                 else if (!Open.Contains(temp))
                 {
                     Open.Add(map.tiles[x, y - 1].GetComponent<Node>().pos);
-                    costToNode[x , y - 1] = costToNode[x, y] + map.map[x, y];
+                    costToNode[x , y - 1] = costToNode[x, y] + map.map[x, y - 1];
                     heuristic[x, y - 1] = costToNode[x, y - 1] + (int)Mathf.Abs(goal.x - x + goal.y - y - 1);
                     parents[x, y - 1] = current;
                 }
@@ -137,16 +137,16 @@ public class Astar : MonoBehaviour {
             if (y + 1 <= 40 && !Burned.Contains(map.tiles[x, y + 1].GetComponent<Node>().pos))
             {
                 Vector2 temp = map.tiles[x, y + 1].GetComponent<Node>().pos;
-                if (Open.Contains(temp) && costToNode[x, y + 1] > costToNode[x, y] + map.map[x, y])
+                if (Open.Contains(temp) && costToNode[x, y + 1] > costToNode[x, y] + map.map[x, y + 1])
                 {
-                    costToNode[x, y + 1] = costToNode[x, y] + map.map[x, y];
+                    costToNode[x, y + 1] = costToNode[x, y] + map.map[x, y + 1];
                     heuristic[x, y + 1] = costToNode[x, y + 1] + (int)Mathf.Abs(goal.x - x + goal.y - y + 1);
                     parents[x, y + 1] = current;
                 }
                 else if (!Open.Contains(temp))
                 {
                     Open.Add(map.tiles[x, y + 1].GetComponent<Node>().pos);
-                    costToNode[x, y + 1] = costToNode[x, y] + map.map[x, y];
+                    costToNode[x, y + 1] = costToNode[x, y] + map.map[x, y + 1];
                     heuristic[x, y + 1] = costToNode[x, y + 1] + (int)Mathf.Abs(goal.x - x + goal.y - y + 1);
                     parents[x, y + 1] = current;
                 }
